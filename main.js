@@ -14,11 +14,15 @@ const $ = cheerio.load(html);
 // Find all products on the page
 const products = $('.product-item');
 
-// Loop through all the products
-// and print their text to terminal
+const results = [];
 for (const product of products) {
-    const productElement = $(product);
-    const productText = productElement.text();
+    const titleElement = $(product).find('a.product-item__title');
+    const title = titleElement.text().trim();
 
-    console.log(productText);
+    const priceElement = $(product).find('span.price');
+    const price = priceElement.contents()[2].nodeValue.trim();
+
+    results.push({ title, price });
 }
+
+console.log(results);
