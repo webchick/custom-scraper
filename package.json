@@ -9,5 +9,9 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "got-scraping": "^4.0.8"
+  }
 }
