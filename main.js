@@ -1,17 +1,15 @@
 // main.js
 import { gotScraping } from 'got-scraping';
 import * as cheerio from 'cheerio';
+import { parse } from 'json2csv'; // <---- added a new import
 
 const storeUrl = 'https://warehouse-theme-metal.myshopify.com/collections/sales';
 
-// Download HTML with Got Scraping
 const response = await gotScraping(storeUrl);
 const html = response.body;
 
-// Parse HTML with Cheerio
 const $ = cheerio.load(html);
 
-// Find all products on the page
 const products = $('.product-item');
 
 const results = [];
@@ -25,4 +23,5 @@ for (const product of products) {
     results.push({ title, price });
 }
 
-console.log(results);
+const csv = parse(results); // <---- added parsing of results to CSV
+console.log(csv);
