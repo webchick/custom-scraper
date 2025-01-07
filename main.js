@@ -1,7 +1,8 @@
 // main.js
+import { writeFileSync } from 'fs'; // <---- added a new import
 import { gotScraping } from 'got-scraping';
 import * as cheerio from 'cheerio';
-import { parse } from 'json2csv'; // <---- added a new import
+import { parse } from 'json2csv';
 
 const storeUrl = 'https://warehouse-theme-metal.myshopify.com/collections/sales';
 
@@ -23,5 +24,5 @@ for (const product of products) {
     results.push({ title, price });
 }
 
-const csv = parse(results); // <---- added parsing of results to CSV
-console.log(csv);
+const csv = parse(results);
+writeFileSync('products.csv', csv); // <---- added writing of CSV to file
