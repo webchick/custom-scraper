@@ -1,4 +1,8 @@
+// main.js
 import { gotScraping } from 'got-scraping';
-import * as cheerio from 'cheerio';
 
-console.log('it works!');
+const storeUrl = 'https://warehouse-theme-metal.myshopify.com/collections/sales';
+
+const response = await gotScraping(storeUrl);
+const html = response.body;
+console.log(html);
