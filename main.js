@@ -10,8 +10,15 @@ const html = response.body;
 
 // Parse HTML with Cheerio
 const $ = cheerio.load(html);
-const headingElement = $('h1');
-const headingText = headingElement.text();
 
-// Print page title to terminal
-console.log(headingText);
+// Find all products on the page
+const products = $('.product-item');
+
+// Loop through all the products
+// and print their text to terminal
+for (const product of products) {
+    const productElement = $(product);
+    const productText = productElement.text();
+
+    console.log(productText);
+}
